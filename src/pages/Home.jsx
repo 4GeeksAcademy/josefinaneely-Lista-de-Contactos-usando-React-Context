@@ -1,16 +1,53 @@
-import rigoImageUrl from "../assets/img/rigo-baby.jpg";
+
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 
 export const Home = () => {
 
-  const {store, dispatch} =useGlobalReducer()
+	const { store, dispatch } = useGlobalReducer()
 
 	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!!</h1>
-			<p>
-				<img src={rigoImageUrl} />
-			</p>
+		<div>
+			<div className="card text-center">
+				<div className="card-body">
+					<h5 className="card-title">Name Last Name</h5>
+					<p className="card-text">Home Adress</p>
+					<p className="card-text">Phone Number</p>
+					<p className="card-text">Email Adress</p>
+				</div>
+			</div>
+
+			<div className="card text-center">
+				<div className="card-body">
+					<h5 className="card-title">Name Last Name</h5>
+					<p className="card-text">Home Adress</p>
+					<p className="card-text">Phone Number</p>
+					<p className="card-text">Email Adress</p>
+				</div>
+			</div>
+
+			<div className="card text-center">
+				<div className="card-body">
+					<h5 className="card-title">Name Last Name</h5>
+					<p className="card-text">Home Adress</p>
+					<p className="card-text">Phone Number</p>
+					<p className="card-text">Email Adress</p>
+				</div>
+			</div>
+
+			<div className="card text-center">
+				<div className="card-body">
+					<h5 className="card-title">Name Last Name</h5>
+					<p className="card-text">Home Adress</p>
+					<p className="card-text">Phone Number</p>
+					<p className="card-text">Email Adress</p>
+				</div>
+			</div>
+
+
+
+
+
 		</div>
+
 	);
 }; 
