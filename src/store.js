@@ -1,31 +1,33 @@
 export const initialStore=()=>{
+  
   return{
-    message: null,
-    todos: [
-      {
-        id: 1,
-        title: "Make the bed",
-        background: null,
-      },
-      {
-        id: 2,
-        title: "Do my homework",
-        background: null,
-      }
-    ]
-  }
+
+    contacts: [
+{
+id: 1,
+name: "Pedro",
+adress: "Adress",
+email: "emai@gmail.com",
+phoneNumber: "00000000"
 }
+
+
+    ]}}
+
+
+
+
 
 export default function storeReducer(store, action = {}) {
   switch(action.type){
 
-    case 'add_task':
+    case 'add_contact':
 
-      const { id,  color } = action.payload
+      const { id,  color, newContact} = action.payload
 
       return {
         ...store,
-        todos: store.todos.map((todo) => (todo.id === id ? { ...todo, background: color } : todo))
+        contacts: store.contacts.map((contact) => (contact.id === id ? { ...contact, background: color } : contact))
       };
     
       case 'delete_task':

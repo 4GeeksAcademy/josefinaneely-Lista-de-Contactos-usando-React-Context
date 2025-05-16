@@ -35,6 +35,7 @@
 .btn {
     background-color:green; /* Color de fondo del botón */
     color: white; /* Color del texto del botón */
+justify-content: end;
  
 }
 
@@ -96,15 +97,20 @@ input {
 }
 
 .back-link {
-    text-align: center;
+    text-align: left;
     margin-top: 15px;
 }
 
 .back-link a {
     color: #007BFF;
     text-decoration: none;
+    text-align:left;
+
+
+  
 }
 
 .back-link a:hover {
     text-decoration: underline;
+
 }
