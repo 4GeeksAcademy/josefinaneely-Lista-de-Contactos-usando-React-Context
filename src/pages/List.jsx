@@ -1,26 +1,45 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import useGlobalReducer from "../hooks/useGlobalReducer";
 
-import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
+export default function List() {
+  const { store } = useGlobalReducer();
 
-export const List = () => {
-	const { store } = useGlobalReducer();
-	const { contacts } = store;
-
-	return (
-		<div>
-			{contacts && contacts.map((contact) => {
-				return (
-					<div key={contact.id}>
-						<div className="card text-center">
-							<div className="card-body">
-								<h5 className="card-title">{contact.name}</h5>
-								<p className="card-text">{contact.adress}</p>
-								<p className="card-text">{contact.email}</p>
-								<p className="card-text">{contact.phoneNumber}</p>
-							</div>
-						</div>
-					</div>
-				);
-			})}
-		</div>
-	);
-}; 
+  return (
+    <div className="container">
+      <h1>Contact List</h1>
+      <ul style={{ listStyle: "none", padding: 0 }}>
+        {store.contacts.map(contact => (
+          <li
+            key={contact.id}
+            style={{
+              marginBottom: "1.5rem",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between"
+            }}
+          >
+            <div>
+              <strong>Nombre:</strong> {contact.name} <br />
+              <strong>Email:</strong> {contact.email} <br />
+              <strong>Teléfono:</strong> {contact.phoneNumber} <br />
+              <strong>Dirección:</strong> {contact.adress}
+            </div>
+            <img
+              src="https://randomuser.me/api/portraits/lego/1.jpg"
+              alt="avatar"
+              style={{
+                width: "150px",
+                height: "150px",
+                borderRadius: "50%",
+                objectFit: "cover",
+                marginLeft: "20px"
+              }}
+            />
+          </li>
+        ))}
+      </ul>
+      <Link to="/contactform" className="btn btn-primary">Add Contact</Link>
+    </div>
+  );
+}
