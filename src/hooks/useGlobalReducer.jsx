@@ -16,15 +16,10 @@ export function StoreProvider({ children }) {
 export default function useGlobalReducer() {
     const { dispatch, store } = useContext(StoreContext);
 
-    // Acción para agregar un contacto
-    const addContact = (contact) => {
-        dispatch({ type: "ADD_CONTACT", payload: contact });
-    };
+
 
     return {
-        store,
-        actions: {
-            addContact
-        }
+dispatch,store
+
     };
 }

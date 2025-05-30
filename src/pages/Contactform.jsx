@@ -10,19 +10,29 @@ export default function Contactform() {
         adress: ""
     });
 
-    const { actions } = useGlobalReducer();
+
     const navigate = useNavigate();
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const newContact = { ...form, id: Date.now() }; // Asigna un id único
-        actions.addContact(newContact);
-        setForm({ name: "", email: "", phoneNumber: "", adress: "" });
-        navigate("/"); // Redirige a la lista de contactos
+        const newContact = { ...form}; 
+        try {
+            const respuesta = await fetch ("https://playground.4geeks.com/contact/agendas/josefinaneely/contacts", {
+                method:"post", 
+                body: JSON.stringify(newContact), 
+                headers:{
+                    "Content-Type":"application/json"
+                }
+            })
+            const data = await respuesta.json()
+            navigate("/"); 
+        } catch (error) {
+      console.log(error)      
+        }    
     };
 
     return (

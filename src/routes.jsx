@@ -7,6 +7,8 @@ import { Layout } from "./pages/Layout";
 import List from "./pages/List";
 import { Demo } from "./pages/Demo";
 import Contactform from "./pages/Contactform";
+import EditContact from "./pages/EditContact";
+
 
 export const router = createBrowserRouter(
     createRoutesFromElements(
@@ -16,6 +18,7 @@ export const router = createBrowserRouter(
             {/* Elimina o comenta la siguiente línea si existe */}
             {/* <Route path="/single/:theId" element={<Single />} /> */}
             <Route path="/demo" element={<Demo />} />
+            <Route path="/edit-contact/:id" element={<EditContact/>}/>
             <Route path="/" element={<List />} />
         </Route>
     )

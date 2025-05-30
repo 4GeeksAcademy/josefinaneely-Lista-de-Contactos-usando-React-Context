@@ -1,12 +1,6 @@
 export const initialStore = () => ({
   contacts: [
-    {
-      id: 1,
-      name: "Name Last Name",
-      adress: "Home Address",
-      email: "emailaddress@gmail.com",
-      phoneNumber: "+000 000 0000"
-    }
+   
   ]
 });
 
@@ -32,8 +26,11 @@ export default function storeReducer(store, action = {}) {
         contacts: store.contacts.filter((contact) => contact.id !== action.payload),
       };
 
-    case "SET_STORE":
-      return action.payload;
+    case "SET_CONTACTS":
+      return {
+      ...store, 
+      contacts: action.payload
+      }
 
     default:
       throw Error("unknown action");

@@ -1,9 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer";
 
+
+
+
 export default function List() {
-  const { store } = useGlobalReducer();
+  const { store, dispatch } = useGlobalReducer();
+
+  useEffect(() => {
+    async function getContacts() {
+      try {
+        const respuesta = await fetch("https://playground.4geeks.com/contact/agendas/josefinaneely/contacts")
+        const data = await respuesta.json()
+        console.log(data)
+        
+    dispatch({
+          type: "SET_CONTACTS",
+          payload: data.contacts
+        }
+        )
+
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getContacts()
+  }, [])
+
+
+
 
   return (
     <div className="container">
@@ -24,6 +50,9 @@ export default function List() {
               <strong>Email:</strong> {contact.email} <br />
               <strong>Teléfono:</strong> {contact.phoneNumber} <br />
               <strong>Dirección:</strong> {contact.adress}
+              <Link to={`/edit-contact/${contact.id}`} >
+              Editar
+              </Link>
             </div>
             <img
               src="https://randomuser.me/api/portraits/lego/1.jpg"
@@ -43,3 +72,4 @@ export default function List() {
     </div>
   );
 }
+
