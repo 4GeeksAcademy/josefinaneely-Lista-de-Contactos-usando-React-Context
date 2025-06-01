@@ -6,10 +6,9 @@ export default function Contactform() {
     const [form, setForm] = useState({
         name: "",
         email: "",
-        phoneNumber: "",
-        adress: ""
+        phone: "",
+        address: ""
     });
-
 
     const navigate = useNavigate();
 
@@ -19,20 +18,20 @@ export default function Contactform() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const newContact = { ...form}; 
+        const newContact = { ...form };
         try {
-            const respuesta = await fetch ("https://playground.4geeks.com/contact/agendas/josefinaneely/contacts", {
-                method:"post", 
-                body: JSON.stringify(newContact), 
-                headers:{
-                    "Content-Type":"application/json"
+            const respuesta = await fetch("https://playground.4geeks.com/contact/agendas/josefinaneely/contacts", {
+                method: "post",
+                body: JSON.stringify(newContact),
+                headers: {
+                    "Content-Type": "application/json"
                 }
-            })
-            const data = await respuesta.json()
-            navigate("/"); 
+            });
+            await respuesta.json();
+            navigate("/");
         } catch (error) {
-      console.log(error)      
-        }    
+            console.log(error);
+        }
     };
 
     return (
@@ -63,20 +62,20 @@ export default function Contactform() {
                 <input
                     type="tel"
                     id="phone"
-                    name="phoneNumber"
+                    name="phone"
                     placeholder="Enter phone"
                     required
-                    value={form.phoneNumber}
+                    value={form.phone}
                     onChange={handleChange}
                 />
                 <label htmlFor="address">Address</label>
                 <input
                     type="text"
                     id="address"
-                    name="adress"
+                    name="address"
                     placeholder="Enter address"
                     required
-                    value={form.adress}
+                    value={form.address}
                     onChange={handleChange}
                 />
                 <button type="submit" className="save-button">Save Contact</button>
